@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+{% block title %}My Cart - Artify{% endblock %}
+
+{% block content %}
+<h2 class="text-light mb-4">My Cart</h2>
+{% if items %}
+<table class="table table-dark table-striped">
+  <thead>
+    <tr>
+      <th>Artwork</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Total</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in items %}
+    <tr>
+      <td>{{ item.artwork.title }}</td>
+      <td>{{ item.quantity }}</td>
+      <td>${{ item.artwork.price }}</td>
+      <td>${{ item.artwork.price * item.quantity }}</td>
+      <td>
+        <a href="{{ url_for('cart.remove_from_cart', item_id=item.id) }}" class="btn btn-danger btn-sm">Remove</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<h4 class="text-light">Total: ${{ total }}</h4>
+<a href="{{ url_for('order.checkout') }}" class="btn btn-primary">Checkout</a>
+{% else %}
+<p class="text-light">Your cart is empty.</p>
+{% endif %}
+{% endblock %}

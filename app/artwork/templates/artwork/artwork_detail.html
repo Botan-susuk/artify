@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block title %}{{ art.title }} | Artify{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="card bg-dark text-light">
+      <img src="{{ url_for('static', filename='img/' + art.image) }}" class="card-img-top" alt="{{ art.title }}">
+      <div class="card-body">
+        <h3 class="card-title">{{ art.title }}</h3>
+        <p class="card-text">{{ art.description }}</p>
+        <p class="card-text"><strong>Price:</strong> ${{ art.price }}</p>
+        {% if current_user.is_authenticated %}
+        <a href="{{ url_for('cart.add_to_cart', art_id=art.id) }}" class="btn btn-outline-light">Add to Cart</a>
+        {% else %}
+        <p class="text-warning">Login to add this artwork to your cart.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

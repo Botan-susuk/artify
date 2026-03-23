@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+{% block title %}Checkout - Artify{% endblock %}
+
+{% block content %}
+<h2 class="text-light mb-4">Checkout</h2>
+<div class="card" style="background-color: #5c2a57;">
+  <div class="card-body">
+    <table class="table table-dark table-striped">
+      <thead>
+        <tr>
+          <th>Artwork</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in items %}
+        <tr>
+          <td>{{ item.artwork.title }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>${{ item.artwork.price }}</td>
+          <td>${{ item.artwork.price * item.quantity }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <h4 class="text-light">Total: ${{ total }}</h4>
+    <form method="POST">
+      {{ form.hidden_tag() }}
+      {{ form.submit(class="btn btn-primary") }}
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block title %}Gallery | Artify{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Artwork Gallery</h2>
+<div class="row">
+  {% for art in artworks %}
+  <div class="col-md-4 mb-3">
+    <div class="card bg-dark text-light h-100">
+      <img src="{{ url_for('static', filename='img/' + art.image) }}" class="card-img-top" alt="{{ art.title }}">
+      <div class="card-body">
+        <h5 class="card-title">{{ art.title }}</h5>
+        <p class="card-text">{{ art.description }}</p>
+        <p class="card-text"><strong>${{ art.price }}</strong></p>
+        <a href="{{ url_for('artwork.artwork_detail', art_id=art.id) }}" class="btn btn-outline-light">View</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

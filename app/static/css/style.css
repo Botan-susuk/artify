@@ -1,0 +1,29 @@
+/* โลโก้ text */
+.brand-text {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(45deg, #c084fc, #7c3aed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 1px;
+}
+
+/* ปุ่มม่วง */
+.btn-purple {
+    background-color: #7c3aed;
+    color: white;
+    border: none;
+}
+
+.btn-purple:hover {
+    background-color: #5b21b6;
+}
+
+/* hover link */
+.nav-link {
+    transition: 0.3s;
+}
+
+.nav-link:hover {
+    color: #c084fc !important;
+    transform: translateY(-1px);
+}

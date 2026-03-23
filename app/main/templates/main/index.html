@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+{% block title %}Home - Artify{% endblock %}
+
+{% block content %}
+<div class="text-center text-light">
+    <h1>Welcome to Artify</h1>
+    <p>Your marketplace for beautiful artwork covers</p>
+    <a href="{{ url_for('artwork.gallery') }}" class="btn btn-primary">Browse Gallery</a>
+</div>
+{% endblock %}
